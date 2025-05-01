@@ -3,40 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SafeSurf - Verifica Sito</title>
+    <title>SafeSurf – Analizzatore di Sicurezza dei Siti Web</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        h1 {
+            color: black;
+            font-weight: bold;
+        }
+
+        h2 {
+            font-weight: normal;
+            color: #555;
+            margin-top: -10px;
+            margin-bottom: 30px;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
         .result {
-            padding: 20px;
-            text-align: center;
-            font-size: 1.2em;
-            border-radius: 8px;
+            font-size: 18px;
+            padding: 15px;
+            border-radius: 5px;
             margin-top: 20px;
         }
-        .phishing {
-            background-color: #f8d7da;  /* Colore rosso per phishing */
-            color: #721c24;
+
+        .result.success {
+            color: green;
+            background-color: #e1fbe1;
+            border: 2px solid green;
         }
-        .safe {
-            background-color: #d4edda;  /* Colore verde per siti sicuri */
-            color: #155724;
+
+        .result.danger {
+            color: red;
+            background-color: #fde2e2;
+            border: 2px solid red;
         }
     </style>
 </head>
 <body>
-    <h1>SafeSurf - Verifica URL</h1>
-    
-    <form method="POST" action="/">
-        <label for="url">Inserisci URL:</label>
-        <input type="text" name="url" id="url" required>
-        <button type="submit">Verifica</button>
+    <h1>SafeSurf – Analizzatore di Sicurezza dei Siti Web</h1>
+    <h2>Uno strumento professionale per individuare siti di phishing e proteggere la tua navigazione online.</h2>
+
+    <form method="POST">
+        <input type="text" name="url" placeholder="Inserisci l'URL da controllare" required>
+        <input type="submit" value="Verifica">
     </form>
 
     {% if result %}
-        <div class="result {% if '❌' in result %}phishing{% else %}safe{% endif %}">
-            {{ result }}
-        </div>
+        {% if 'non è un sito di phishing' in result %}
+            <div class="result success">{{ result }}</div>
+        {% else %}
+            <div class="result danger">{{ result }}</div>
+        {% endif %}
     {% endif %}
-
-    <a href="/storico">Visualizza Storico Verifiche</a>
 </body>
 </html>
