@@ -31,7 +31,7 @@ def index():
         if normalized in phishing_list:
             result = f'❌ Attenzione! {input_url} è un sito di phishing.'
         else:
-            result = f'✅ {input_url} è un sito sicuro.'
+            result = f'✅ {input_url} non è un sito di phishing.'
 
         # Salvataggio del risultato in un file CSV di log
         with open('log_verifiche.csv', 'a', newline='', encoding='utf-8') as log:
