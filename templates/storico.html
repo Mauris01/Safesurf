@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Storico Verifiche – SafeSurf</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        h1 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 25px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .safe {
+            color: green;
+        }
+        .phishing {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>📜 Storico delle Verifiche – SafeSurf</h1>
+
+    <table>
+        <tr>
+            <th>Data e Ora</th>
+            <th>URL</th>
+            <th>Risultato</th>
+        </tr>
+        {% for row in storico %}
+        <tr>
+            <td>{{ row[0] }}</td>
+            <td>{{ row[1] }}</td>
+            <td class="{{ 'phishing' if 'phishing' in row[2].lower() else 'safe' }}">{{ row[2] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

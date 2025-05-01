@@ -1,0 +1,38 @@
+# Ambiente virtuale (creato con venv o virtualenv)
+venv/
+env/
+
+# File di configurazione locale
+*.env
+*.pem
+
+# File di cache di Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Database temporanei o file locali
+*.sqlite3
+*.db
+*.log
+
+# File del sistema operativo
+.DS_Store
+Thumbs.db
+
+# File generati da Flask
+instance/
+*.bak
+
+# File di Visual Studio Code
+.vscode/
+
+# File di pacchetti
+*.egg-info/
+dist/
+build/
+
+# File personali
+credentials.json
+unique_phishing_urls.txt
+phishing_sites.csv
